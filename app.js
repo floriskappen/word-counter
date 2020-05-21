@@ -9,7 +9,7 @@ fs.readFile('input.txt', 'utf8', (err, data) => {
     for (let x = 0; x < words.length; x++) {
         let word = words[x];
         word = word.replace(/\r?\n|\r/g, '')
-        word = word.replace(/[.,\/#!$%\^&\*;:?{}=\-_`~()]/g, '')
+        word = word.replace(/[.,\/#!$%\^&\*;:"?{}=\-_`~()]/g, '')
         if (word === '' || word === '-') continue
         word = word.toLowerCase()
         
@@ -20,8 +20,6 @@ fs.readFile('input.txt', 'utf8', (err, data) => {
             pairs.push([word, 1])
         }
     }
-
-    pairs = pairs.filter(el => el[1] > 1)
 
     pairs.sort((a, b) => {
         return b[1] - a[1]
